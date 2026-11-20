@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fatma Nur Döner AI Video Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* One dark world so the videos carry the color. Left-aligned column, two portrait videos side by side. */
+  --ink: #0f1420;
+  --panel: #171e2e;
+  --line: #2a3349;
+  --text: #eef0f5;
+  --muted: #9aa3b8;
+  --accent: #ff7a59;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--ink); }
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.55;
+}
+main {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 56px 24px 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.05; font-weight: 700; letter-spacing: -0.02em; }
+h2 { font-size: 1.5rem; font-weight: 700; }
+h3 { font-size: 1.15rem; font-weight: 500; }
+p { margin: 0; max-width: 65ch; }
+.role { color: var(--accent); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.82rem; }
+header { display: flex; flex-direction: column; gap: 14px; }
+.lede { font-size: 1.12rem; color: var(--text); }
+.muted { color: var(--muted); }
+section { display: flex; flex-direction: column; gap: 22px; }
+.work { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+figure { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background: #000;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  display: block;
+}
+figcaption { display: flex; flex-direction: column; gap: 6px; }
+figcaption p { font-size: 0.95rem; color: var(--muted); }
+.spec-notes {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-self: start;
+}
+.spec-notes h3 { font-size: 1.05rem; }
+.spec-notes dl { margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.spec-notes dt { font-weight: 600; font-size: 0.93rem; color: var(--text); }
+.spec-notes dd { margin: 2px 0 0; font-size: 0.93rem; color: var(--muted); }
+.disclaimer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
+ol.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; counter-reset: s; }
+ol.steps li {
+  counter-increment: s;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.93rem;
+  color: var(--muted);
+}
+ol.steps li::before { content: counter(s); font-family: var(--display); font-weight: 700; color: var(--accent); font-size: 1.1rem; }
+ol.steps strong { color: var(--text); font-weight: 600; font-size: 1rem; }
+ul.tools { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+ul.tools li { border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px; font-size: 0.88rem; color: var(--text); }
+footer { border-top: 1px solid var(--line); padding-top: 24px; display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 0.97rem; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, video:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h2 + .note { margin-top: -10px; }
+.note { font-size: 0.93rem; color: var(--muted); }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.grid3 figcaption p { font-size: 0.9rem; }
+.wide { display: flex; flex-direction: column; gap: 30px; }
+.wide video { aspect-ratio: 16 / 9; }
+.scenes { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; }
+.scenes img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); display: block; }
+.scenes a:hover img { border-color: var(--accent); }
+.scenes-label { font-size: 0.85rem; color: var(--muted); }
+@media (max-width: 640px) { .scenes { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+ul.stats { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+ul.stats li { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; font-size: 0.88rem; color: var(--muted); display: flex; flex-direction: column; gap: 2px; }
+ul.stats strong { font-family: var(--display); font-size: 1.6rem; color: var(--text); line-height: 1.1; }
+@media (max-width: 640px) { ul.stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+img.sprite { width: 100%; display: block; border-radius: 8px; }
+.rank { color: var(--accent); font-family: var(--display); font-weight: 700; margin-right: 6px; }
+@media (max-width: 860px) { .grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } ol.steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .grid3 { grid-template-columns: 1fr; }
+  main { padding: 36px 16px 56px; gap: 44px; }
+  .work { grid-template-columns: 1fr; }
+  ol.steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="role">AI video portfolio</p>
+    <h1>Fatma Nur Döner</h1>
+    <p class="lede">I am an AI content producer. I make short-form 9:16 and long-form 16:9 video with generative AI and run it from the first idea to launch. I started on Higgsfield, then produced in Adobe Firefly with Veo, Kling, Sora and Seedance, and I test each new model as it comes out. Today my own channels run on an automated pipeline I built with Claude and Python. On my YouTube channel <a href="https://www.youtube.com/channel/UC6qyOnZRB9WhbMd7grSd2oA" target="_blank" rel="noopener">Kıyamet Günü</a> I publish fully AI-generated series with episodes of 9 to 17 minutes.</p>
+    <ul class="stats">
+      <li><strong>5+</strong>channels launched since April 2026</li>
+      <li><strong>200K+</strong>organic views, no paid promotion</li>
+      <li><strong>2</strong>Shorts past 30K views</li>
+      <li><strong>2</strong>campaign films published by Yapı Kredi</li>
+    </ul>
+    <p class="muted">Background: B.Arch from METU, now doing an M.Sc. in Information Systems. A mobile and PC gamer, and design lead for DevJam, Ankara's largest game jam. This page starts with spec ads for Royal Match, then work from my own channels, then campaign films for Yapı Kredi.</p>
+  </header>
+
+  <section aria-labelledby="spec-h">
+    <h2 id="spec-h">Spec ads for Royal Match</h2>
+    <p class="note">Five vertical user acquisition ads, 19 seconds each, made for my Dream Games application. There is no case study stage yet, so I made these on my own initiative, working quickly with my own AI generation flow. They were put together in a very short time, only to give a first idea of how I would approach the job.</p>
+    <div class="grid3">
+      <figure>
+        <video controls playsinline preload="metadata" poster="dream_c7.jpg" aria-label="Snake from above, fail spec ad with AI video">
+          <source src="dream_c7.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3><span class="rank">01</span>Snake from above</h3>
+          <p>Built on Royal Match's longest-running ad idea, the snake. It slides down the shaft, then hangs over the king while you play the board. On the last move the wrong match is played, the king falls into the well and the snake is waiting. The snake shots are AI video, and every on-screen line is voiced in Turkish, in sync with the text.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <video controls playsinline preload="metadata" poster="dream_c8.jpg" aria-label="Stop the lava, fail spec ad with a playable-looking match-3 board">
+          <source src="dream_c8.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3><span class="rank">02</span>Stop the lava</h3>
+          <p>A lava ad with a board that really plays, opening and closing on AI video of the lava, with a Turkish voiceover on every line. Four good moves set off cascades and push the lava back, the fifth is the wrong match and the lava floods the room. The tiles are cut from the store screenshots and played by my own match-3 engine in Python: swaps, pops, falling tiles, cascades and particles.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <video controls playsinline preload="metadata" poster="dream_c4.jpg" aria-label="Save the King spec ad, Turkish voiceover">
+          <source src="dream_c4.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3><span class="rank">03</span>Save the King</h3>
+          <p>A story ad with a Turkish voiceover. The viewer is put in charge of a kingdom whose king has gone missing, the dangers flash past, then the king appears trapped in the game's own puzzles. Every cut lands in a pause in the voice.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <video controls playsinline preload="metadata" poster="dream_c6.jpg" aria-label="Save the King flipbook spec ad">
+          <source src="dream_c6.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3><span class="rank">04</span>Save the King, 8 frames a second</h3>
+          <p>The same story as a flipbook. The picture changes every eighth of a second on a 120 bpm beat, and each step jumps the camera or swaps the image, so stills play like stop-motion animation.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <video controls playsinline preload="metadata" poster="dream_c5.jpg" aria-label="The King Didn't Make It fail spec ad">
+          <source src="dream_c5.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3><span class="rank">05</span>The King Didn't Make It</h3>
+          <p>A fail ad. One move is left, the player picks the wrong match, the door locks and the crown sinks. It ends on the classic hook: could you have saved him?</p>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="spec-notes">
+      <h3>How they were made</h3>
+      <dl>
+        <div><dt>Game footage stays real</dt><dd>The king, the boards and the app icon come from the game's public store listing. Nothing from the game was generated with AI.</dd></div>
+        <div><dt>AI builds the world around it</dt><dd>The throne room, flooding chamber, shark, falling rocks, spikes, locked door and sinking crown were generated with Nano Banana in Google Flow. The snake and lava clips are AI video from Flow, made with Omni 1.2 Flash and Veo 3.1 Lite.</dd></div>
+        <div><dt>Voice and sound</dt><dd>The Turkish voiceovers were made in ElevenLabs; each line is cut at its pauses and placed on the frame where its text appears. Sound effects and music were synthesized in code and duck under the voice.</dd></div>
+        <div><dt>Assembly in code</dt><dd>Python built every cut: camera moves, on-screen text, flash and shake effects, the beat grid of the flipbook and the end card. The live boards run on a small match-3 engine I wrote, using the real tiles, and the king and snake are cut out of the store art so they move above the board and the king can fall into the well.</dd></div>
+      </dl>
+      <dl>
+        <div><dt>Built for variation</dt><dd>Each ad is driven by parameters: the board, the moves, the on-screen lines and their timing. A new hook, a new board layout or a new voiceover is a re-render, not a re-edit. The same Save the King story ships in two cuts, a voiced story and an 8-frames-a-second flipbook, and the fail idea runs in three settings: snake, lava and locked door.</dd></div>
+        <div><dt>Quality check</dt><dd>Every output was checked against the game. I kept the real king and tiles from the store art instead of generating them, so nothing off-brand reaches the screen, and cut shots that hurt the read of the gameplay, such as a snake crossing over the board.</dd></div>
+      </dl>
+      <p class="disclaimer">Spec work made for my application. Not commissioned by or affiliated with Dream Games.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="long-h">
+    <h2 id="long-h">Long-form 16:9 series on my channel, Kıyamet Günü</h2>
+    <p class="note">Episodes run 9 to 17 minutes and are fully AI-generated: script, images, video, voice and edit. The first season of the Istanbul zombie story ran five episodes and reached 17,000 views in its first three weeks, with no paid promotion. These are excerpts, cut down for this page. <a href="https://www.youtube.com/channel/UC6qyOnZRB9WhbMd7grSd2oA" target="_blank" rel="noopener">See the channel on YouTube</a>.</p>
+    <div class="wide">
+      <figure>
+        <video controls playsinline preload="metadata" poster="lf_metrobus.jpg" aria-label="Zombie Outbreak in Istanbul: The Last Metrobus, episode 1 excerpt">
+          <source src="lf_metrobus.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3>Zombie Outbreak in Istanbul: The Last Metrobus, episode 1</h3>
+          <p>An interactive-style story told in second person: it is 6:42 pm, you are on a packed metrobus over the Bosphorus, and every phone starts screaming at once. A consistent cast across dozens of scenes, with Turkish narration and subtitles. The first 2.5 minutes of a 10:41 episode, which passed 8,600 views.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <video controls playsinline preload="metadata" poster="lf_kiskanclik.jpg" aria-label="Why do we get jealous, excerpt">
+          <source src="lf_kiskanclik.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3>Why do we get jealous?</h3>
+          <p>A psychology explainer led by a recurring host character, a gray-haired professor who walks through the science scene by scene. An excerpt from the animated opening of a 13:36 video.</p>
+        </figcaption>
+        <p class="scenes-label">Scenes from the full video, in order. Click to open it larger.</p>
+        <a href="scenes_k.jpg" target="_blank"><img class="sprite" src="scenes_k.jpg" alt="Scenes from the full video" loading="lazy"></a>
+      </figure>
+      <figure>
+        <video controls playsinline preload="metadata" poster="lf_osmanli.jpg" aria-label="Why did the Ottoman Empire collapse, excerpt">
+          <source src="lf_osmanli.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3>Why did the Ottoman Empire collapse?</h3>
+          <p>A history explainer with a second recurring host, an older male professor who steps into each period: the map of the empire, the siege lines, the palace corridors. The animated opening of an 11:25 video.</p>
+        </figcaption>
+        <p class="scenes-label">Scenes from the full video, in order. Click to open it larger.</p>
+        <a href="scenes_o.jpg" target="_blank"><img class="sprite" src="scenes_o.jpg" alt="Scenes from the full video" loading="lazy"></a>
+      </figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="kule-h">
+    <h2 id="kule-h">Kule, a horror series from my YouTube channel</h2>
+    <p class="note">A seven-part Shorts series I write and produce end to end. I still run this channel and new episodes are on the way, so the first episode is here.</p>
+    <div class="work">
+      <figure>
+        <video controls playsinline preload="metadata" poster="kule_b1.jpg" aria-label="Kule episode 1, Turkish horror Short">
+          <source src="kule_b1.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3>Episode 1: Don't open the door</h3>
+          <p>Deniz takes a job as the night watch in a tower for 30 days. There is one rule: never open the door to anyone who calls your name. The thing behind the door is never shown; the fear comes from sound, light and the door itself. 51 seconds, vertical, in Turkish.</p>
+        </figcaption>
+      </figure>
+      <div class="spec-notes">
+        <h3>How it was made</h3>
+        <dl>
+          <div><dt>Story and character</dt><dd>A series card fixes the rules, the character and the look, so all seven episodes stay consistent. Each episode opens with a second-person hook and ends on a choice question for the viewer.</dd></div>
+          <div><dt>Images</dt><dd>Fourteen scenes per episode, generated with Nano Banana in Google Flow from a saved character reference.</dd></div>
+          <div><dt>Voice</dt><dd>Turkish narration from ElevenLabs.</dd></div>
+          <div><dt>Assembly in code</dt><dd>Python aligns every scene to the narration, then adds camera moves, captions, the on-screen HUD (heart rate in sync with a heartbeat sound, days left, supplies, lantern) and synthesized sound effects.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="mw-h">
+    <h2 id="mw-h">Miniature worlds, my first channel</h2>
+    <p class="note">My first channel, Miniaworlds, was my first experiment with AI video, before I started producing it regularly. Tiny workers take on everyday objects: a sugar cube, a flood, a pizza. Two of the Shorts passed 30,000 views. I stopped the channel because the format was hard to automate and could not grow into long-form video, so it was not a path to monetization. <a href="https://www.youtube.com/channel/UCBm7z8uE9a9FoyJSmYzBA6Q" target="_blank" rel="noopener">See the channel on YouTube</a>.</p>
+    <div class="grid3">
+      <figure>
+        <video controls playsinline preload="metadata" poster="tw_1.jpg" aria-label="Tiny workers vs sugar cube, miniature world Short">
+          <source src="tw_1.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3>Tiny workers vs sugar cube</h3>
+          <p>34,909 views</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <video controls playsinline preload="metadata" poster="tw_2.jpg" aria-label="A flood hits the tiny world, miniature world Short">
+          <source src="tw_2.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3>A flood hits the tiny world</h3>
+          <p>33,022 views</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <video controls playsinline preload="metadata" poster="tw_3.jpg" aria-label="The tiny workshop goes dark, miniature world Short">
+          <source src="tw_3.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3>The tiny workshop goes dark</h3>
+          <p>2,935 views</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <video controls playsinline preload="metadata" poster="tw_4.jpg" aria-label="Mini workers making a pizza, miniature world Short">
+          <source src="tw_4.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3>Mini workers making a pizza</h3>
+          <p>1,147 views</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <video controls playsinline preload="metadata" poster="tw_5.jpg" aria-label="The giant watermelon, miniature world Short">
+          <source src="tw_5.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3>The giant watermelon</h3>
+          <p>795 views</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <video controls playsinline preload="metadata" poster="tw_6.jpg" aria-label="One second changed the entire city, miniature world Short">
+          <source src="tw_6.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3>One second changed the entire city</h3>
+          <p>The last Short before I stopped</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="work-h">
+    <h2 id="work-h">Campaign work for Yapı Kredi</h2>
+    <p class="note">Both films were published on Yapı Kredi's social media accounts, including TikTok.</p>
+    <div class="work">
+      <figure>
+        <video controls playsinline preload="metadata" poster="flight.jpg" aria-label="Domestic flight ticket campaign video">
+          <source src="flight.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3>Domestic flight ticket offer</h3>
+          <p>A customer acquisition spot for a 1,000 TL flight discount. One fixed frame, an airplane window, with AI-generated views of Turkey changing behind it. Made in Adobe Firefly after testing many models there for each shot, including Kling AI, Nano Banana, Veo, Seedance and Runway. 23 seconds, vertical.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <video controls playsinline preload="metadata" poster="bes.jpg" aria-label="Private pension campaign video">
+          <source src="bes.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <h3>Private pension (BES) campaign</h3>
+          <p>A child at a funfair asks for a toy, and the answer points to the family's pension account. Character-led and dialogue-driven, generated with Kling AI. 20 seconds, vertical.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="how-h">
+    <h2 id="how-h">How I work, from idea to launch</h2>
+    <p class="muted">The same loop runs on my own channels, so one idea becomes a finished video with very little manual editing.</p>
+    <ol class="steps">
+      <li><strong>Ideate</strong>Hook and script first, so every shot has a job.</li>
+      <li><strong>Pick the tool mix</strong>Test models shot by shot and keep the best: Nano Banana for stills, Veo, Kling or Omni for motion, ElevenLabs for voice.</li>
+      <li><strong>Automate variation</strong>Python, written with Claude, assembles image, voice and sound, so variants are re-renders.</li>
+      <li><strong>Quality check</strong>Character consistency, brand accuracy, artifacts and sync to voice, before anything ships.</li>
+      <li><strong>Measure and iterate</strong>Track views and engagement per video and push the formats that hold attention.</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="tools-h">
+    <h2 id="tools-h">Tools I have worked with</h2>
+    <ul class="tools">
+      <li>Veo</li><li>Kling AI</li><li>Sora</li><li>Seedance</li><li>Higgsfield</li><li>Runway</li><li>Nano Banana</li><li>Google Flow</li><li>Adobe Firefly</li><li>ElevenLabs</li><li>Claude</li><li>GPT</li><li>Gemini</li><li>Python</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>fatmanurdoner4@gmail.com</span>
+    <a href="https://www.linkedin.com/in/fnurdoner">linkedin.com/in/fnurdoner</a>
+  </footer>
+</main>
+</body>
+</html>
